@@ -1,0 +1,489 @@
+* {
+  font-family: Helvetica, cursive;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  height: 40px;
+  background: white;
+  border-color: white white black white;
+  border-style: solid;
+  padding: 2px;
+  display: block;
+  z-index: 10000;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+footer p {
+  text-align: center;
+  font-size: 12px;
+}
+
+section h3 {
+  width: 100%;
+  height: 40px;
+  background: white;
+  border-color: white white black white;
+  border-style: solid;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+#sticky {
+  position: sticky;
+  height: 100%;
+  top: 0px;
+  z-index: 13;
+}
+
+#sticky2 {
+  position: sticky;
+  height: 100%;
+  top: 60px;
+  z-index: 12;
+}
+
+.heading {}
+
+.clearfix :after {
+  content: '';
+  display: table;
+  width: 100%;
+  clear: both;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  /*Выравнивание по центру*/
+}
+
+.user {
+  float: left;
+}
+
+.logOut {
+  font-weight: bold;
+  float: right;
+}
+
+.search {
+  float: left;
+}
+
+.basket {
+  float: left;
+}
+
+.basket h1 {
+  text-align: center;
+  width: 50%;
+  height: 40px;
+  background: #fff;
+  border-color: white white black white;
+  border-style: solid;
+  padding: 10px;
+  margin: 20px auto;
+}
+
+.menu {
+  margin-top: 20px;
+  padding: 0;
+  display: block;
+}
+
+.menu li {
+  float: left;
+  display: block;
+  margin-right: 41px;
+}
+
+.menu li2 {
+  float: right;
+  display: block;
+  margin-right: 41px;
+}
+
+.menu li a {
+  text-decoration: none;
+}
+
+.menu li2 a {
+  text-decoration: none;
+}
+
+count {
+  display: inline-block;
+  background: #ccc;
+  color: #000;
+  text-align: center;
+  border-radius: 50%;
+  padding: 0.5em 0;
+  width: 2em;
+  height: 1em;
+  margin-top: -9px;
+}
+
+.titles {
+  font-size: 25px;
+  text-align: center;
+}
+
+.items {
+  width: 200px;
+  float: left;
+}
+
+.items a {
+  font-size: 17px;
+  text-align: center;
+  text-decoration: none;
+  /* display: block; */
+  padding: 20px;
+}
+
+.items img {
+  width: 180px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* background: rgba(0, 0, 0, 0.1); */
+  transition: opacity 200ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 15;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  width: 65%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.popup h2 {
+  font-size: 20px;
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: #06D85F;
+}
+
+/* .popup .content {
+  max-height: 30%;
+  overflow: auto;
+} */
+
+/* @media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+} */
+
+.content img {
+  float: left;
+}
+
+.content a {
+  position: absolute;
+  top: 42%;
+  left: 35%;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.content b {
+  position: absolute;
+  top: 42%;
+  left: 65%;
+  font-size: 22px;
+}
+
+.content c {
+  position: absolute;
+  top: 37%;
+  left: 80%;
+  border: 1px solid #333;
+  /* Рамка */
+  display: inline-block;
+  padding: 10px 19px;
+  /* Поля */
+  text-decoration: none;
+  /* Убираем подчёркивание */
+  color: #000;
+  /* Цвет текста */
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(to bottom, white, #e0dede);
+}
+
+.content c:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  /* Тень */
+  background: linear-gradient(to bottom, #fcfff4, #bfbfbd);
+  /* Градиент */
+  color: black;
+  cursor: pointer
+}
+
+.items .button {
+  position: relative;
+  top: -10%;
+  left: 0;
+}
+
+/*Окно корзины*/
+
+/*Оформление*/
+
+.modalDialog {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* background: rgba(0, 0, 0, 0); */
+  transition: opacity 200ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 16;
+}
+
+/*Открытие*/
+
+.modalDialog:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modalDialog>div {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  width: 30%;
+  height: 51%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+/*Закрытие окна*/
+
+.close1 {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.modalDialog .close1:hover {
+  color: #06D85F;
+}
+
+/* Окно с товаром */
+
+#show-cart li {
+  margin: 1px auto;
+  padding: 20px;
+  background: #fff;
+  width: 60%;
+  height: 70px;
+  position: relative;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.basket .order {
+  position: absolute;
+  top: 86%;
+  left: 75%;
+  border: 1px solid #333;
+  /* Рамка */
+  display: inline-block;
+  padding: 10px 19px;
+  /* Поля */
+  text-decoration: none;
+
+  /* Убираем подчёркивание */
+  color: #000;
+  /* Цвет текста */
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(to bottom, white, #e0dede);
+}
+
+.basket .order:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  /* Тень */
+  background: linear-gradient(to bottom, #fcfff4, #bfbfbd);
+  /* Градиент */
+  color: black;
+  cursor: pointer;
+}
+
+.basket li img {
+  width: 70px;
+  height: 70px;
+}
+
+.basket li name {
+  position: absolute;
+  /* margin: 30px; */
+  padding: 10px;
+  font-weight: bold;
+}
+
+.basket li price {
+  padding: 10px;
+}
+
+.basket li button1 {
+  width: 20%;
+  float: right;
+  margin: -65px -30px;
+  padding: 10px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.basket li button1:hover {
+  color: #06D85F;
+}
+
+.searchModal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* background: rgba(0, 0, 0, 0); */
+  transition: opacity 200ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 16;
+}
+
+.searchModal:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.searchModal>div {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  width: 30%;
+  height: 51%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.searchModal .close1:hover {
+  color: #06D85F;
+}
+
+.search h1 {
+  text-align: center;
+  width: 50%;
+  height: 40px;
+  background: #fff;
+  border-color: white white black white;
+  border-style: solid;
+  padding: 10px;
+  margin: 20px auto;
+}
+
+.content {
+  text-align: center;
+}
+
+#searchInput {
+  margin: 2px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  height: 30px;
+  width: 260px;
+  text-align: center;
+  outline: none;
+}
+
+.search_button {
+  margin: 10px auto;
+  width: 15%;
+  /* display: inline; */
+}
+
+.c {
+  border: 1px solid #333;
+  /* Рамка */
+  display: inline-block;
+  padding: 10px 15px;
+  /* Поля */
+  text-decoration: none;
+  /* Убираем подчёркивание */
+  color: #000;
+  /* Цвет текста */
+  border-radius: 10px;
+  background: linear-gradient(to bottom, white, #e0dede);
+  text-align: center;
+}
+
+.c:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  /* Тень */
+  background: linear-gradient(to bottom, #fcfff4, #bfbfbd);
+  /* Градиент */
+  color: black;
+  cursor: pointer
+}

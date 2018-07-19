@@ -1,0 +1,89 @@
+* {
+  font-family: Helvetica, cursive;
+}
+
+#hello {
+  text-align: center;
+  font-size: 20px;
+}
+
+body {
+  margin: 0px;
+  height: 100%;
+}
+
+span {
+  word-break: break-all;
+  display: block;
+  margin-top: 5px;
+}
+
+.content {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.register {
+  width: 500px;
+  margin: 200px auto 0px auto;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px #000;
+  text-align: center;
+  min-height: 400px;
+  max-height: 1600px;
+}
+
+#register_login, #register_password, #register_password2, #register_radio, #register_adress {
+  margin: 3px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  height: 30px;
+  width: 260px;
+  text-align: center;
+  outline:none;
+}
+
+.register_button {
+  margin: 0 auto;
+  width: 40%;
+  /* display: inline; */
+}
+
+/* .register_button input {
+	padding-top: 5px;
+	padding-bottom: 10px;
+	border-color: gray;
+	border-radius: 10px;
+	text-align: center;
+} */
+
+.register a {
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.c {
+  border: 1px solid #333;
+  /* Рамка */
+  display: inline-block;
+  padding: 10px 19px;
+  /* Поля */
+  text-decoration: none;
+  /* Убираем подчёркивание */
+  color: #000;
+  /* Цвет текста */
+  border-radius: 10px;
+  background: linear-gradient(to bottom, white, #e0dede);
+  text-align: center;
+}
+
+.c:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  /* Тень */
+  background: linear-gradient(to bottom, #fcfff4, #bfbfbd);
+  /* Градиент */
+  color: black;
+  cursor: pointer
+}
