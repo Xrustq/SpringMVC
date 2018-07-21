@@ -15,9 +15,6 @@ public class WebConfig implements WebMvcConfigurer {
     GuestInterceptor guestInterceptor;
 
     @Autowired
-    UserInterceptor userInterceptor;
-
-    @Autowired
     AdminInterceptor adminInterceptor;
 
     @Override
@@ -25,7 +22,6 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(guestInterceptor).addPathPatterns("/**")
                 .excludePathPatterns("/login", "/registration");
-        registry.addInterceptor(userInterceptor).addPathPatterns("/main/**");
-        registry.addInterceptor(adminInterceptor).addPathPatterns("/main/**", "/admin/**");
+        registry.addInterceptor(adminInterceptor).addPathPatterns("/admin/**");
     }
 }

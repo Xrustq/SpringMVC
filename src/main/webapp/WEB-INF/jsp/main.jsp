@@ -120,7 +120,7 @@
                 </div>
                 <c:forEach items="${list}" var="product">
                     <div class="items">
-                        <img src="img/square.png" alt="product">
+                        <img src="${product.img}" alt="product">
                         <a class="button" href="#popup${product.id}">${product.name}</a>
                         <div id="popup${product.id}" class="overlay">
                             <div class="popup">
@@ -128,11 +128,11 @@
                                 <div class="content">
                                     <a>${product.name}</a>
                                     <b>${product.price} руб.</b>
-                                    <c class="add-to-cart" href="#" data-img="img/square.png"
+                                    <c class="add-to-cart" href="#" data-img="${product.img}"
                                        data-name="${product.name}"
                                        data-price="${product.price}">В корзину
                                     </c>
-                                    <img src="img/square.png" alt="product">
+                                    <img src="${product.img}" alt="product">
                                 </div>
                             </div>
                         </div>

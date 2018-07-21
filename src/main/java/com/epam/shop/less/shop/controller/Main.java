@@ -1,5 +1,6 @@
 package com.epam.shop.less.shop.controller;
 
+import com.epam.shop.less.shop.database.ProductDatabase;
 import com.epam.shop.less.shop.session.UserSessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +13,13 @@ public class Main {
     @Autowired
     UserSessionManager userSessionManager;
 
-    @GetMapping({"/", "/main"})
+    @Autowired
+    ProductDatabase productDatabase;
+
+    @GetMapping("/main")
     public ModelAndView main(ModelAndView modelAndView) {
         modelAndView.addObject("user", userSessionManager.getUser());
+        modelAndView.addObject("list", productDatabase.getProducts());
         modelAndView.setViewName("main");
 
         return modelAndView;

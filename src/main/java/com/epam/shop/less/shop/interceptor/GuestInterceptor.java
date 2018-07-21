@@ -17,8 +17,8 @@ public class GuestInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        User user = userSessionManager.getUser();
-        if (user == null) {
+
+        if (userSessionManager.getUser() == null) {
             response.sendRedirect("/login");
             return false;
         }

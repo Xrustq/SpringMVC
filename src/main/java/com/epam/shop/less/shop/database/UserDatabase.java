@@ -5,7 +5,7 @@ import com.epam.shop.less.shop.exeption.NotFoundUserException;
 
 public interface UserDatabase {
 
-    public void addUser(User user);
+    void addUser(User user);
 
-    public User findByEmail(String email);
+    User findByEmail(String email);
 }

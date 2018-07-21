@@ -29,7 +29,7 @@ public class Login {
     UserSessionManager userSessionManager;
 
     @GetMapping("/login")
-    public ModelAndView login(){
+    public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userForm", new LoginUser());
         modelAndView.setViewName("login");
@@ -53,7 +53,7 @@ public class Login {
     }
 
     @ExceptionHandler(NotFoundUserException.class)
-    public String handleUserNotFoundException(Model model){
+    public String handleUserNotFoundException(Model model) {
         return "login";
     }
 

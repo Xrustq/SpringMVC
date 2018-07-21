@@ -23,7 +23,7 @@ public class AdminInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         User user = userSessionManager.getUser();
         if (Objects.isNull(user) || !user.getRole().equals(Role.ADMIN)) {
-            response.sendRedirect("/");
+            response.sendRedirect("/main");
             return false;
         }
 

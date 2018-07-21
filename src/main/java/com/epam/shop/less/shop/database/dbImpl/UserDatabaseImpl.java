@@ -13,17 +13,6 @@ public class UserDatabaseImpl implements UserDatabase {
 
     private ArrayList<User> userDatabase = new ArrayList<>();
 
-    {
-        User admin = new User();
-        admin.setEmail("admin@mail.ru");
-        admin.setPassword("123123123");
-        admin.setConfirmPassword("123123123");
-        admin.setFirstName("admin");
-        admin.setLastName("admin");
-        admin.setRole(Role.ADMIN);
-        userDatabase.add(admin);
-    }
-
     public void addUser(User user) {
         userDatabase.add(user);
         System.out.println(user.toString());
