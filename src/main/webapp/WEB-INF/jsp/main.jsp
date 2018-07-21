@@ -19,7 +19,7 @@
                         ${user.email}
                     </li>
                     <li class="logOut">
-                        <a href="authorize">Выйти</a>
+                        <a href="login">Выйти</a>
                     </li>
                     <li2 class="basket">
                         <a href="#openModal2" class="info">Корзина

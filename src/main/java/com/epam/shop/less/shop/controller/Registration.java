@@ -1,5 +1,6 @@
 package com.epam.shop.less.shop.controller;
 
+import com.epam.shop.less.shop.entity.Role;
 import com.epam.shop.less.shop.entity.User;
 import com.epam.shop.less.shop.service.UserService;
 import com.epam.shop.less.shop.validator.UserValidator;
@@ -36,8 +37,9 @@ public class Registration {
             return "registration";
         }
 
+        userForm.setRole(Role.USER);
         userService.save(userForm);
 
-        return "redirect:/authorize";
+        return "redirect:/login";
     }
 }

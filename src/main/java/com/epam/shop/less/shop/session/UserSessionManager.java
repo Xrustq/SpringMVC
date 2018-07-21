@@ -5,9 +5,9 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-@SessionScope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+@SessionScope(proxyMode = ScopedProxyMode.INTERFACES)
 @Component
-public class UserSessionManager {
+public class UserSessionManager implements SessionManager{
 
     private User user;
 

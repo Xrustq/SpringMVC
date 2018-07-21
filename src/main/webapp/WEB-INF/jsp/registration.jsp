@@ -55,7 +55,7 @@
 												</div>
 												<div class="authorize">
 													<br>
-														<a href="authorize">Авторизация</a>
+														<a href="login">Авторизация</a>
 													</form:form>
 												</div>
 											</head>

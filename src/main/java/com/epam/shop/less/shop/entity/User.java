@@ -10,6 +10,7 @@ public class User {
     private String email;
     private String password;
     private String confirmPassword;
+    private Role role;
 
 //    public int getId() {
 //        return id;
@@ -59,15 +60,23 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-//                "id=" + id +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
+                ", role=" + role +
                 '}';
     }
 

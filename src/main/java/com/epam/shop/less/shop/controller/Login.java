@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class Authorize {
+public class Login {
 
     @Autowired
     UserService userService;
@@ -28,25 +28,21 @@ public class Authorize {
     @Autowired
     UserSessionManager userSessionManager;
 
-    @GetMapping("/authorize")
+    @GetMapping("/login")
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userForm", new LoginUser());
-        modelAndView.setViewName("authorize");
+        modelAndView.setViewName("login");
         return modelAndView;
     }
 
-    @PostMapping("/authorize")
+    @PostMapping("/login")
     public String login(@ModelAttribute("userForm") LoginUser userForm, BindingResult bindingResult) {
 
-        LoginUser loginUser = new LoginUser();
-        loginUser.setEmail(userForm.getEmail());
-        loginUser.setPassword(userForm.getPassword());
-
-        authorizeValidator.validate(loginUser, bindingResult);
+        authorizeValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "authorize";
+            return "login";
         }
 
         User user = userService.findByEmail(userForm.getEmail());
@@ -54,6 +50,11 @@ public class Authorize {
         userSessionManager.setUser(user);
 
         return "redirect:/main";
+    }
+
+    @ExceptionHandler(NotFoundUserException.class)
+    public String handleUserNotFoundException(Model model){
+        return "login";
     }
 
 
