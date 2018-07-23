@@ -1,3 +1,7 @@
+* {
+  font-family: Helvetica, cursive;
+}
+
 table.blueTable {
   border: 1px solid #1C6EA4;
   background-color: #EEEEEE;

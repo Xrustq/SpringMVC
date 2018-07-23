@@ -101,83 +101,41 @@
         </div>
     </div>
 </header>
-<c:forEach items="${list}" var="categories">
+<c:forEach items="${list}" var="product">
 <section>
     <div class="container">
-        <div class="titles">
-            <div class="products clearfix">
+        <div class="products clearfix">
+            <div class="titles">
                 <div class="title_fist" id="sticky2">
-                    <h3>${categories.name}</h3>
+                    <h3>${product.name}</h3>
                 </div>
-                <c:forEach items="${categories.products}" var="product">
-                    <div class="items">
-                        <img src="${product.img}" alt="product">
-                        <a class="button" href="#popup${product.id}">${product.name}</a>
-                        <div id="popup${product.id}" class="overlay">
-                            <div class="popup">
-                                <a class="close" href="#">&times;</a>
-                                <div class="content">
-                                    <a>${product.name}</a>
-                                    <b>${product.price} руб.</b>
-                                    <c class="add-to-cart" href="#" data-img="${product.img}"
-                                       data-name="${product.name}"
-                                       data-price="${product.price}">В корзину
-                                    </c>
-                                    <img src="${product.img}" alt="product">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
+                <div>
+                  <c:forEach items="${product.products}" var="product">
+                      <div class="items">
+                          <img src="${product.img}" alt="product">
+                          <a class="button" href="#popup${product.id}">${product.name}</a>
+                          <div id="popup${product.id}" class="overlay">
+                              <div class="popup">
+                                  <a class="close" href="#">&times;</a>
+                                  <div class="content">
+                                      <a>${product.name}</a>
+                                      <b>${product.price} руб.</b>
+                                      <c class="add-to-cart" href="#" data-img="${product.img}"
+                                         data-name="${product.name}"
+                                         data-price="${product.price}">В корзину
+                                      </c>
+                                      <img src="${product.img}" alt="product">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </c:forEach>
+                </div>
             </div>
         </div>
     </div>
 </section>
 </c:forEach>
-
-<%-- <section>
-    <div class="container">
-        <div class="products clearfix">
-            <div class="titles">
-                <div class="title_fist" id="sticky2">
-                    <h3>Категория товаров 1</h3>
-                </div>
-                <div id="products1"></div>
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="container">
-        <div class="titles">
-            <div class="products clearfix">
-                <div class="title_fist" id="sticky2">
-                    <h3>Категория товаров 2</h3>
-                </div>
-                <c:forEach items="${list}" var="product">
-                    <div class="items">
-                        <img src="${product.img}" alt="product">
-                        <a class="button" href="#popup${product.id}">${product.name}</a>
-                        <div id="popup${product.id}" class="overlay">
-                            <div class="popup">
-                                <a class="close" href="#">&times;</a>
-                                <div class="content">
-                                    <a>${product.name}</a>
-                                    <b>${product.price} руб.</b>
-                                    <c class="add-to-cart" href="#" data-img="${product.img}"
-                                       data-name="${product.name}"
-                                       data-price="${product.price}">В корзину
-                                    </c>
-                                    <img src="${product.img}" alt="product">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
-    </div>
-</section> --%>
 <br>
 <br>
 <br>
@@ -215,6 +173,8 @@
     </div>
 </footer>
 </body>
+
+
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="js/shoppingCart.js"></script>
 <script src="js/products.js"></script>
