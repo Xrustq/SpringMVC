@@ -2,12 +2,14 @@ package com.epam.shop.less.shop.database.dbImpl;
 
 import com.epam.shop.less.shop.database.ProductDatabase;
 import com.epam.shop.less.shop.entity.Product;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Scope("prototype")
 public class ProductDatabaseImpl implements ProductDatabase {
 
     private ArrayList<Product> productList = new ArrayList<>();
@@ -47,8 +49,9 @@ public class ProductDatabaseImpl implements ProductDatabase {
     @Override
     public void updateProduct(Product product) {
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).equals(product)) {
-                productList.add(i, product);
+            if (productList.get(i).getId() == product.getId()) {
+                productList.set(i, product);
+                productList.remove(i);
             }
         }
     }

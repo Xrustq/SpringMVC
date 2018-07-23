@@ -36,4 +36,12 @@ public class LoginUser {
 
         return Objects.hash(email, password);
     }
+
+    @Override
+    public String toString() {
+        return "LoginUser{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

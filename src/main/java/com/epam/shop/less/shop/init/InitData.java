@@ -1,7 +1,10 @@
 package com.epam.shop.less.shop.init;
 
+
+import com.epam.shop.less.shop.database.CategoryDatabse;
 import com.epam.shop.less.shop.database.ProductDatabase;
 import com.epam.shop.less.shop.database.UserDatabase;
+import com.epam.shop.less.shop.entity.Category;
 import com.epam.shop.less.shop.entity.Product;
 import com.epam.shop.less.shop.entity.Role;
 import com.epam.shop.less.shop.entity.User;
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 
 @Service
 public class InitData {
@@ -17,7 +21,13 @@ public class InitData {
     UserDatabase userDatabase;
 
     @Autowired
+    CategoryDatabse categoryDatabse;
+
+    @Autowired
     ProductDatabase productDatabase;
+
+    @Autowired
+    ProductDatabase productDatabase2;
 
     @PostConstruct
     public void init() {
@@ -31,22 +41,19 @@ public class InitData {
         admin.setRole(Role.ADMIN);
         userDatabase.addUser(admin);
 
+        for (int i = 1; i <= 6; i++) {
+            productDatabase.createProduct(new Product(i, "Product" + i, i, "img/square.png", 0));
+        }
 
-        Product product = new Product();
-        product.setId(20);
-        product.setName("qweqwe");
-        product.setPrice(333);
-        product.setImg("img/square.png");
+        for (int i = 13; i <= 20; i++) {
+            productDatabase2.createProduct(new Product(i, "Product" + i, i, "img/square.png", 1));
+        }
 
 
-        Product product2 = new Product();
-        product2.setId(21);
-        product2.setName("zxczxczx");
-        product2.setPrice(222);
-        product2.setImg("img/square.png");
+        categoryDatabse.createCategory(new Category("Категория товаров 1", productDatabase));
+        categoryDatabse.createCategory(new Category("Категория товаров 2", productDatabase2));
 
-        productDatabase.createProduct(product);
-        productDatabase.createProduct(product2);
 
     }
 }
+

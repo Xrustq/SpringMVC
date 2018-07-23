@@ -30,8 +30,8 @@ public class AuthorizeValidator implements Validator {
     @Override
     public void validate(Object o, Errors errors) {
         LoginUser user = (LoginUser) o;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
+//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Required");
+//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
 
         if (!isValidEmailAddress(user.getEmail())) {
             errors.rejectValue("email", "InvalidEmail.userForm.email");

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class Login {
 
@@ -50,6 +52,12 @@ public class Login {
         userSessionManager.setUser(user);
 
         return "redirect:/main";
+    }
+
+    @GetMapping("/logout")
+    public String logOut(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 
     @ExceptionHandler(NotFoundUserException.class)

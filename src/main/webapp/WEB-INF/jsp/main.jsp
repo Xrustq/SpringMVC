@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
+      <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -19,7 +21,7 @@
                         ${user.email}
                     </li>
                     <li class="logOut">
-                        <a href="login">Выйти</a>
+                        <a href="logout">Выйти</a>
                     </li>
                     <li2 class="basket">
                         <a href="#openModal2" class="info">Корзина
@@ -99,7 +101,41 @@
         </div>
     </div>
 </header>
+<c:forEach items="${list}" var="categories">
 <section>
+    <div class="container">
+        <div class="titles">
+            <div class="products clearfix">
+                <div class="title_fist" id="sticky2">
+                    <h3>${categories.name}</h3>
+                </div>
+                <c:forEach items="${categories.products}" var="product">
+                    <div class="items">
+                        <img src="${product.img}" alt="product">
+                        <a class="button" href="#popup${product.id}">${product.name}</a>
+                        <div id="popup${product.id}" class="overlay">
+                            <div class="popup">
+                                <a class="close" href="#">&times;</a>
+                                <div class="content">
+                                    <a>${product.name}</a>
+                                    <b>${product.price} руб.</b>
+                                    <c class="add-to-cart" href="#" data-img="${product.img}"
+                                       data-name="${product.name}"
+                                       data-price="${product.price}">В корзину
+                                    </c>
+                                    <img src="${product.img}" alt="product">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+</section>
+</c:forEach>
+
+<%-- <section>
     <div class="container">
         <div class="products clearfix">
             <div class="titles">
@@ -141,7 +177,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --%>
 <br>
 <br>
 <br>

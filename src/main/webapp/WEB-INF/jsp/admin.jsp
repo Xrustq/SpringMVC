@@ -62,6 +62,16 @@
                         </td>
                       </tr>
                       <tr>
+                                              <td>
+                                                <form:label path="category">
+                                                  <spring:message text="Категория"/>
+                                                </form:label>
+                                              </td>
+                                              <td>
+                                                <form:input path="category"/>
+                                              </td>
+                                            </tr>
+                      <tr>
                         <td colspan="2">
                           <c:if test="${!empty product.name}">
                             <input type="submit" value="<spring:message text="Редактировать товар"/>"/>
@@ -74,7 +84,8 @@
                     </table>
                   </form:form>
                   <br>
-
+                    <c:forEach items="${list}" var="categories">
+                      <span>${categories.name}</span>
                     <table class="blueTable">
                       <tr>
                         <th>Id</th>
@@ -84,7 +95,7 @@
                         <th>Редактировать</th>
                         <th>Удалить</th>
                       </tr>
-                      <c:forEach items="${list}" var="product">
+                      <c:forEach items="${categories.products}" var="product">
                         <tr>
                           <td>${product.id}</td>
                           <td>${product.name}</td>
@@ -96,10 +107,11 @@
                                 <img src="${pageContext.request.contextPath}/img/edit.png" width="20" height="20"/></a>
                             </td>
                             <td style="width: 60px;">
-                              <a href="<c:url value='admin/delete/${product.id}' />">&times;</a>
+                              <a href="<c:url value='admin/delete/${product.id}/${product.category}' />">&times;</a>
                             </td>
                           </tr>
                         </c:forEach>
                       </table>
                     </body>
+                    </c:forEach>
                   </html>
