@@ -1,7 +1,6 @@
 package com.epam.shop.less.shop.database.dbImpl;
 
 import com.epam.shop.less.shop.database.UserDatabase;
-import com.epam.shop.less.shop.entity.Role;
 import com.epam.shop.less.shop.entity.User;
 import com.epam.shop.less.shop.exeption.NotFoundUserException;
 import org.springframework.stereotype.Repository;

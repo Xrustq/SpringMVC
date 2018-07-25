@@ -108,7 +108,8 @@
                                     <img src="${pageContext.request.contextPath}/img/edit.png" width="20" height="20"/></a>
                                 </td>
                                 <td style="width: 60px;">
-                                  <a href="<c:url value='admin/delete/${product.id}/${product.category}' />">&times;</a>
+                                  <a href="<c:url value='admin/delete/${product.id}/${product.category}' />">
+                                   <img src="${pageContext.request.contextPath}/img/remove.png" width="20" height="20"/></a></a>
                                 </td>
                               </tr>
                             </c:forEach>
