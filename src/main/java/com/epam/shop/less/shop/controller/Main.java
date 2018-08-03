@@ -1,6 +1,6 @@
 package com.epam.shop.less.shop.controller;
 
-import com.epam.shop.less.shop.database.SearchDatabase;
+//import com.epam.shop.less.shop.database.SearchDatabase;
 import com.epam.shop.less.shop.entity.Search;
 import com.epam.shop.less.shop.service.CategoryService;
 import com.epam.shop.less.shop.session.UserSessionManager;
@@ -18,13 +18,13 @@ public class Main {
     @Autowired
     CategoryService categoryService;
 
-    @Autowired
-    SearchDatabase searchDatabase;
+//    @Autowired
+//    SearchDatabase searchDatabase;
 
     @GetMapping("/main")
     public ModelAndView main(ModelAndView modelAndView) {
         modelAndView.addObject("user", userSessionManager.getUser());
-        modelAndView.addObject("list",categoryService.getCategories());
+        modelAndView.addObject("list",categoryService.getCategory());
         modelAndView.addObject("searchString", new Search());
         modelAndView.setViewName("main");
 
@@ -33,9 +33,9 @@ public class Main {
 
     @PostMapping("/main")
     public ModelAndView search(@ModelAttribute("searchString") Search searchString, ModelAndView modelAndView) {
-        modelAndView.addObject("search", searchDatabase.getProductByName(searchString.getName()));
+//        modelAndView.addObject("search", searchDatabase.getProductByName(searchString.getName()));
         modelAndView.addObject("user", userSessionManager.getUser());
-        modelAndView.addObject("list",categoryService.getCategories());
+        modelAndView.addObject("list",categoryService.getCategory());
         modelAndView.setViewName("main");
 
         return modelAndView;

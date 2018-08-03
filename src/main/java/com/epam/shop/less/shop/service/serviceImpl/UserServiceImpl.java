@@ -15,11 +15,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user) {
-        userDAO.createUser(user);
+        userDAO.save(user);
     }
 
     @Override
-    public User findByEmail(String email) {
-        return userDAO.findByEmail(email);
+    public User getUserById(Long id) {
+        return userDAO.getUserById(id);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userDAO.getUserByEmail(email);
     }
 }

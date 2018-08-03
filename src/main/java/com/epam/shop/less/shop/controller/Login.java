@@ -47,7 +47,7 @@ public class Login {
             return "login";
         }
 
-        User user = userService.findByEmail(userForm.getEmail());
+        User user = userService.getUserByEmail(userForm.getEmail());
 
         userSessionManager.setUser(user);
 

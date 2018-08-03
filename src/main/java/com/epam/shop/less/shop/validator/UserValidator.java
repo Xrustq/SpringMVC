@@ -36,8 +36,8 @@ public class UserValidator implements Validator {
             errors.rejectValue("email", "InvalidEmail.userForm.email");
         }
 
-        if (userService.findByEmail(user.getEmail()) != null) {
-            System.out.println(userService.findByEmail(user.getEmail()).toString());
+        if (userService.getUserByEmail(user.getEmail()) != null) {
+            System.out.println(userService.getUserByEmail(user.getEmail()).toString());
             errors.rejectValue("email", "Duplicate.userForm.email");
         }
 

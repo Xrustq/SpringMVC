@@ -1,20 +1,16 @@
 package com.epam.shop.less.shop.dao;
 
 import com.epam.shop.less.shop.entity.Product;
+import com.epam.shop.less.shop.entity.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface ProductDAO {
+@Repository
+public interface ProductDAO extends JpaRepository<Product, Long> {
 
-    Product getProductById(int productId);
+    Product getProductById(Long productId);
 
-    List<Product> getProducts();
-
-    List<Product> getProductsByName(String name);
-
-    void createProduct(Product product);
-
-    void updateProduct(Product product);
-
-    void deleteProduct(int productId);
+    List<Product> getProductByName(String name);
 }

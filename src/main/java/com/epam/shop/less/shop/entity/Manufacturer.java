@@ -1,11 +1,12 @@
 package com.epam.shop.less.shop.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "category")
-public class Category {
+@Table(name = "manufacturer")
+public class Manufacturer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,7 +15,7 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "manufacturer", fetch = FetchType.EAGER)
     private Set<Product> products;
 
     public Long getId() {
@@ -40,6 +41,5 @@ public class Category {
     public void setProducts(Set<Product> products) {
         this.products = products;
     }
-
 
 }

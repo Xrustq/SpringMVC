@@ -1,5 +1,6 @@
 package com.epam.shop.less.shop.controller;
 
+import com.epam.shop.less.shop.dao.RoleDAO;
 import com.epam.shop.less.shop.entity.Role;
 import com.epam.shop.less.shop.entity.User;
 import com.epam.shop.less.shop.service.UserService;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Controller
 public class Registration {
 
@@ -20,6 +24,9 @@ public class Registration {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    private RoleDAO roleDAO;
 
     @GetMapping("/registration")
     public ModelAndView registration(){
@@ -37,7 +44,10 @@ public class Registration {
             return "registration";
         }
 
-        userForm.setRole(Role.USER);
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleDAO.getOne(1L));
+        userForm.setRoles(roles);
+
         userService.save(userForm);
 
         return "redirect:/login";

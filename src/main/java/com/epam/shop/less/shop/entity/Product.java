@@ -1,31 +1,43 @@
 package com.epam.shop.less.shop.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "product")
 public class Product {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "price")
     private int price;
+
+    @Column(name = "img")
     private String img;
-    private int category;
 
-    public Product() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Category category;
 
-    public Product(int id, String name, int price, String img, int category) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.img = img;
-        this.category = category;
-    }
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Manufacturer manufacturer;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,40 +65,20 @@ public class Product {
         this.img = img;
     }
 
-    public int getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(int category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return id == product.id &&
-                price == product.price &&
-                category == product.category &&
-                Objects.equals(name, product.name) &&
-                Objects.equals(img, product.img);
+    public Manufacturer getManufacturer() {
+        return manufacturer;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, name, price, img, category);
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", img='" + img + '\'' +
-                ", category=" + category +
-                '}';
-    }
 }

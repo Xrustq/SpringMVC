@@ -37,11 +37,11 @@ public class AuthorizeValidator implements Validator {
             errors.rejectValue("email", "InvalidEmail.userForm.email");
         }
 
-        if (userService.findByEmail(user.getEmail()) == null) {
+        if (userService.getUserByEmail(user.getEmail()) == null) {
             errors.rejectValue("email", "NotFoundUser.userForm.email");
         }
 
-        if (!userService.findByEmail(user.getEmail()).getPassword().equals(user.getPassword())) {
+        if (!userService.getUserByEmail(user.getEmail()).getPassword().equals(user.getPassword())) {
             errors.rejectValue("password", "InvalidPass.userForm.password");
         }
     }

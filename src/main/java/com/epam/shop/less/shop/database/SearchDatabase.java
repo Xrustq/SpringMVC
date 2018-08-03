@@ -5,6 +5,6 @@ import com.epam.shop.less.shop.entity.Search;
 
 import java.util.List;
 
-public interface SearchDatabase {
-    Product getProductByName(String name);
-}
+//public interface SearchDatabase {
+//    Product getProductByName(String name);
+//}

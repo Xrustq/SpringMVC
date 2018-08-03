@@ -1,10 +1,15 @@
 package com.epam.shop.less.shop.dao;
 
 import com.epam.shop.less.shop.entity.User;
-import com.epam.shop.less.shop.exeption.NotFoundUserException;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserDAO {
-    User findByEmail(String email);
+@Repository
+public interface UserDAO extends JpaRepository<User, Long> {
 
-    void createUser(User user);
+    User getUserById(Long id);
+
+    User getUserByEmail(String email);
+
+
 }

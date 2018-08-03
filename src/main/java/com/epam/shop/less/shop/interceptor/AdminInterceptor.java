@@ -2,6 +2,7 @@ package com.epam.shop.less.shop.interceptor;
 
 import java.time.LocalTime;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.epam.shop.less.shop.entity.Role;
 import com.epam.shop.less.shop.entity.User;
 import com.epam.shop.less.shop.session.UserSessionManager;
+import org.apache.jasper.tagplugins.jstl.core.If;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -22,7 +24,7 @@ public class AdminInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         User user = userSessionManager.getUser();
-        if (Objects.isNull(user) || !user.getRole().equals(Role.ADMIN)) {
+        if (Objects.isNull(user) || !checkRole()) {
             response.sendRedirect("/main");
             return false;
         }
@@ -38,6 +40,15 @@ public class AdminInterceptor implements HandlerInterceptor {
         }
 //        request.setAttribute("user", user);
         return true;
+    }
+
+    public boolean checkRole () {
+        User user = userSessionManager.getUser();
+        for ( Role s : user.getRoles() ) {
+            if (s.getName().equals("ADMIN"))
+                return true;
+        }
+        return false;
     }
 
 
