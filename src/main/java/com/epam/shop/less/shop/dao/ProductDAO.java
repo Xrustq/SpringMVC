@@ -1,7 +1,6 @@
 package com.epam.shop.less.shop.dao;
 
 import com.epam.shop.less.shop.entity.Product;
-import com.epam.shop.less.shop.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

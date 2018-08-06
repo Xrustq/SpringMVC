@@ -42,13 +42,18 @@ public class Admin {
     }
 
     @RequestMapping("admin/edit/{id}")
-    public ModelAndView editProduct(@PathVariable("id") Long id, @ModelAttribute("product") Product product, ModelAndView modelAndView) {
-        modelAndView.addObject("product", /*categoryService.getCategory().get(product.getCategory()).getProductDatabase().getProductById(id)*/
-                                                        productService.getProductById(id));
+    public ModelAndView editProduct(@PathVariable("id") Long id, ModelAndView modelAndView) {
+        modelAndView.addObject("product", productService.getProductById(id));
         modelAndView.addObject("list", categoryService.getCategory());
-//        categoryService.getCategory().get(product.getCategory()).getProductDatabase().updateProduct(product);
+        modelAndView.setViewName("admin");
+        return modelAndView;
+    }
+
+    @PostMapping("admin/edit")
+    public ModelAndView edit(@ModelAttribute("product") Product product, ModelAndView modelAndView) {
         productService.updateProduct(product);
         modelAndView.setViewName("admin");
         return modelAndView;
     }
+
 }

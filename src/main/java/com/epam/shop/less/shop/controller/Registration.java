@@ -25,8 +25,14 @@ public class Registration {
     @Autowired
     UserService userService;
 
+//    @Autowired
+//    BasketService basketService;
+
     @Autowired
     private RoleDAO roleDAO;
+
+//    @Autowired
+//    BasketDAO basketDAO;
 
     @GetMapping("/registration")
     public ModelAndView registration(){
@@ -48,7 +54,17 @@ public class Registration {
         roles.add(roleDAO.getOne(1L));
         userForm.setRoles(roles);
 
+
+
         userService.save(userForm);
+
+//        basketDAO.createBasketByUserId(userForm.getId());
+////        basketService.createBasketByUserId(userForm.getId());
+//        Set<Basket> basket = new HashSet<>();
+//        basket.add(basketDAO.getOne(userForm.getId()));
+//        userForm.setBasket(basket);
+//
+//        userService.save(userForm);
 
         return "redirect:/login";
     }

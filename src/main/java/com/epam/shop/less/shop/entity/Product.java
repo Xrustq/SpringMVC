@@ -1,17 +1,15 @@
 package com.epam.shop.less.shop.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "product")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @JoinColumn(name = "product_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
 
     @Column(name = "name")
@@ -24,14 +22,15 @@ public class Product {
     private String img;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "category_id", nullable = true)
     private Category category;
 
-    @ManyToOne
-    @JoinColumn(name = "manufacturer_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Manufacturer manufacturer;
+//    @ManyToOne
+//    @JoinColumn(name = "manufacturer_id")
+//    private Manufacturer manufacturer;
+
+//    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+//    private Set<Basket> basketSet;
 
     public Long getId() {
         return id;
@@ -73,12 +72,12 @@ public class Product {
         this.category = category;
     }
 
-    public Manufacturer getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(Manufacturer manufacturer) {
-        this.manufacturer = manufacturer;
-    }
+//    public Manufacturer getManufacturer() {
+//        return manufacturer;
+//    }
+//
+//    public void setManufacturer(Manufacturer manufacturer) {
+//        this.manufacturer = manufacturer;
+//    }
 
 }

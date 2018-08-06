@@ -1,7 +1,6 @@
 package com.epam.shop.less.shop.entity;
 
 import javax.persistence.*;
-import java.util.Objects;
 import java.util.Set;
 
 // https://stackoverflow.com/questions/37970743/unique-violation-7-error-duplicate-key-value-violates-unique-constraint-users/37972960
@@ -11,7 +10,8 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
 
     @Column(name = "first_name")
@@ -33,6 +33,11 @@ public class User {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name = "user_basket", joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "basket_id"))
+//    private Set<Basket> basket;
 
     public Long getId() {
         return id;
@@ -90,34 +95,42 @@ public class User {
         this.roles = roles;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(firstName, user.firstName) &&
-                Objects.equals(lastName, user.lastName) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(confirmPassword, user.confirmPassword);
-    }
+//    public Set<Basket> getBasket() {
+//        return basket;
+//    }
+//
+//    public void setBasket(Set<Basket> basket) {
+//        this.basket = basket;
+//    }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        User user = (User) o;
+//        return Objects.equals(firstName, user.firstName) &&
+//                Objects.equals(lastName, user.lastName) &&
+//                Objects.equals(email, user.email) &&
+//                Objects.equals(password, user.password) &&
+//                Objects.equals(confirmPassword, user.confirmPassword);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//
+//        return Objects.hash(firstName, lastName, email, password, confirmPassword);
+//    }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(firstName, lastName, email, password, confirmPassword);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", confirmPassword='" + confirmPassword + '\'' +
-                ", roles=" + roles +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", email='" + email + '\'' +
+//                ", password='" + password + '\'' +
+//                ", confirmPassword='" + confirmPassword + '\'' +
+//                ", roles=" + roles +
+//                '}';
+//    }
 }

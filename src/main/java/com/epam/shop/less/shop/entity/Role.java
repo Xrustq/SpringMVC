@@ -8,7 +8,8 @@ import java.util.Set;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
 
     @Column(name = "name ")
@@ -44,12 +45,12 @@ public class Role {
         this.users = users;
     }
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", users=" + users +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Role{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", users=" + users +
+//                '}';
+//    }
 }
