@@ -1,6 +1,7 @@
 package com.epam.shop.less.shop.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "product")
@@ -80,4 +81,22 @@ public class Product {
 //        this.manufacturer = manufacturer;
 //    }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return price == product.price &&
+                Objects.equals(id, product.id) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(img, product.img) &&
+                Objects.equals(category, product.category);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name, price, img, category);
+    }
 }

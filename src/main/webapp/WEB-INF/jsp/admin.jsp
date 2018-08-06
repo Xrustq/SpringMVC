@@ -23,12 +23,12 @@
                       <table>
                         <tr>
                           <td>
-                            <form:label path="id">
-                              <spring:message text="ID"/>
+                            <form:label path="id" >
+                              <%-- <spring:message text="ID"/> --%>
                             </form:label>
                           </td>
                           <td>
-                            <form:input path="id"/>
+                            <form:input path="id" type="hidden"/>
                           </td>
                         </tr>
                         <tr>

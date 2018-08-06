@@ -3,6 +3,7 @@ package com.epam.shop.less.shop.controller;
 import com.epam.shop.less.shop.entity.Search;
 import com.epam.shop.less.shop.service.CategoryService;
 import com.epam.shop.less.shop.service.ProductService;
+import com.epam.shop.less.shop.service.SearchService;
 import com.epam.shop.less.shop.session.UserSessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class Main {
 //    BasketService basketService;
 
     @Autowired
+    SearchService searchService;
+
+    @Autowired
     ProductService productService;
 
     @GetMapping("/main")
@@ -39,7 +43,7 @@ public class Main {
 
     @PostMapping("/main")
     public ModelAndView search(@ModelAttribute("searchString") Search searchString, ModelAndView modelAndView) {
-//        modelAndView.addObject("search", searchDatabase.getProductByName(searchString.getName()));
+        modelAndView.addObject("search", searchService.findProducts(searchString.getName()));
         modelAndView.addObject("user", userSessionManager.getUser());
         modelAndView.addObject("list",categoryService.getCategory());
         modelAndView.setViewName("main");

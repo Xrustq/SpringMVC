@@ -17,7 +17,7 @@
                       <nav>
                         <ul class="menu">
                           <li class="user">
-                          <a href="admin">${user.email}</a>
+                            <a href="admin">${user.email}</a>
                           </li>
                           <li class="logOut">
                             <a href="logout">Выйти</a>
@@ -138,77 +138,46 @@
                                                           <br>
                                                             <br>
                                                               <br>
-                                                                <br>
-                                                                  <br>
-                                                                    <br>
-                                                                      <br>
-                                                                        <br>
-                                                                          <br>
-                                                                            <br>
-                                                                              <br>
-                                                                                <br>
-                                                                                  <br>
 
-                                                                                    <footer>
-                                                                                      <div class="container">
-                                                                                        <hr width="100%" size="2" color="black">
-                                                                                          <p>Любая текстовая информация для футера</p>
-                                                                                        </div>
-                                                                                      </footer>
-                                                                                    </body>
+                                                                <footer>
+                                                                  <div class="container">
+                                                                    <hr width="100%" size="2" color="black">
+                                                                      <p>Любая текстовая информация для футера</p>
+                                                                    </div>
+                                                                  </footer>
+                                                                </body>
 
-                                                                                    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-                                                                                    <script src="js/shoppingCart.js"></script>
-                                                                                    <script src="js/products.js"></script>
+                                                                <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+                                                                <script src="js/shoppingCart.js"></script>
+                                                                <script src="js/products.js"></script>
 
-                                                                                    <script>
-                                                                                      $(".add-to-cart").click(function (event) {
-                                                                                        event.preventDefault();
-                                                                                        var name = $(this).attr("data-name");
-                                                                                        var price = Number($(this).attr("data-price"));
-                                                                                        var img = $(this).attr("data-img");
-                                                                                        shoppingCart.addItemToCart(name, price, 1, img);
-                                                                                        displayCart();
-                                                                                      });
-                                                                                      $("#clear-cart").click(function (event) {
-                                                                                        shoppingCart.clearCart();
-                                                                                        displayCart();
-                                                                                      });
+                                                                <script>
+                                                                  $(".add-to-cart").click(function (event) {
+                                                                    event.preventDefault();
+                                                                    var name = $(this).attr("data-name");
+                                                                    var price = Number($(this).attr("data-price"));
+                                                                    var img = $(this).attr("data-img");
+                                                                    shoppingCart.addItemToCart(name, price, 1, img);
+                                                                    displayCart();
+                                                                  });
+                                                                  function displayCart() {
+                                                                    var cartArray = shoppingCart.listCart();
+                                                                    console.log(cartArray);
+                                                                    var output = "";
+                                                                    for (var i in cartArray) {
+                                                                      output += "<li> <img src='" + cartArray[i].img + "'> <name>" + cartArray[i].name + "</name> <price> Цена: " + cartArray[i].price + " Руб. </price> <button1 href=# class='delete-item' data-name='" + cartArray[i].name + "'>X</button1> </li>";
+                                                                    }
+                                                                    $("#show-cart").html(output);
+                                                                    $("#count-cart").html(shoppingCart.countCart());
+                                                                    $("#total-cart").html(shoppingCart.totalCart() + " Руб.");
+                                                                  }
 
-                                                                                      function displayCart() {
-                                                                                        var cartArray = shoppingCart.listCart();
-                                                                                        console.log(cartArray);
-                                                                                        var output = "";
-                                                                                        for (var i in cartArray) {
-                                                                                          output += "<li> <img src='" + cartArray[i].img + "'> <name>" + cartArray[i].name + "</name> <price> Цена: " + cartArray[i].price + " Руб. </price> <button1 href=# class='delete-item' data-name='" + cartArray[i].name + "'>X</button1> </li>";
-                                                                                        }
-                                                                                        $("#show-cart").html(output);
-                                                                                        $("#count-cart").html(shoppingCart.countCart());
-                                                                                        $("#total-cart").html(shoppingCart.totalCart() + " Руб.");
-                                                                                      }
+                                                                  $("#show-cart").on("click", ".delete-item", function (event) {
+                                                                    var name = $(this).attr("data-name");
+                                                                    shoppingCart.removeItemFromCartAll(name);
+                                                                    displayCart();
+                                                                  });
+                                                                  displayCart();
+                                                                </script>
 
-                                                                                      $("#show-cart").on("click", ".delete-item", function (event) {
-                                                                                        var name = $(this).attr("data-name");
-                                                                                        shoppingCart.removeItemFromCartAll(name);
-                                                                                        displayCart();
-                                                                                      });
-                                                                                      $("#show-cart").on("click", ".subtract-item", function (event) {
-                                                                                        var name = $(this).attr("data-name");
-                                                                                        shoppingCart.removeItemFromCart(name);
-                                                                                        displayCart();
-                                                                                      });
-                                                                                      $("#show-cart").on("click", ".plus-item", function (event) {
-                                                                                        var name = $(this).attr("data-name");
-                                                                                        shoppingCart.addItemToCart(name, 0, 1);
-                                                                                        displayCart();
-                                                                                      });
-                                                                                      $("#show-cart").on("change", ".item-count", function (event) {
-                                                                                        var name = $(this).attr("data-name");
-                                                                                        var count = Number($(this).val());
-                                                                                        shoppingCart.setCountForItem(name, count);
-                                                                                        displayCart();
-                                                                                      });
-                                                                                      displayCart();
-                                                                                    </script>
-
-                                                                                  </html>
+                                                              </html>
